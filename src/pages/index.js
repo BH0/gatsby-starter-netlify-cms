@@ -21,14 +21,14 @@ const IndexPage = ({data}) => (
 ); 
 
 export const pageQuery = graphql`
-  query IndexQuery { 
+  query IndexQuery {
     allMarkdownRemark(
-      limit: 4
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true }}}
-    ) { 
-      edges { 
-        node { 
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
           id
           fields {
             slug
@@ -41,7 +41,6 @@ export const pageQuery = graphql`
         }
       }
     }
-  }
-`
+  }`
 
 export default IndexPage

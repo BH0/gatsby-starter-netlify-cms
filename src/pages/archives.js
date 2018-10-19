@@ -19,6 +19,30 @@ const ArchivesPage  = ({data}) => (
 ) 
 
 export const pageQuery = graphql`
+  query IndexQuery {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+          }
+        }
+      }
+    }
+  }
+
+/*
+export const pageQuery = graphql`
   query ArchivesQuery { 
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: ASC }
@@ -38,5 +62,6 @@ export const pageQuery = graphql`
     }
   }
 `
+*/
 
 export default ArchivesPage

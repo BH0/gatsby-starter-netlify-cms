@@ -14,6 +14,30 @@ export default function Template({data}) {
     );  
 } 
 
+export const pageQuery = graphql`
+  query IndexQuery {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    ) {
+      edges {
+        node {
+          excerpt(pruneLength: 400)
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+          }
+        }
+      }
+    }
+  }
+
+/*
 export const postQuery = graphql`
     query BlogPostByPath($path: String!) { 
         markdownRemark(frontmatter: { path: { eq: $path} }) { 
@@ -25,3 +49,4 @@ export const postQuery = graphql`
         }
     }
 ` 
+*/

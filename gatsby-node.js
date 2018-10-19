@@ -1,25 +1,28 @@
 const path = require('path'); 
 const { createFilePath } = require('gatsby-source-filesystem')
  
+// note: an issue relating to Netlify CMS was errors which seemed to be getting caused by GraphQl/Remarkdown were cached by Netlify CMS and thus the errors kept appearing even thought their causes had been fixed 
+
 exports.createPages = ({boundActionCreators, graphql}) => { 
    const {createPage} = boundActionCreators; 
-   const postTemplate = path.resolve('src/templates/post.js'); 
-   return graphql(`
-      {
-        allMarkdownRemark(limit: 1000) {
-          edges {
-            node {
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                templateKey
-              }
+    const postTemplate = path.resolve('src/templates/post.js'); 
+    return graphql(`
+    {
+      allMarkdownRemark(limit: 1000) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+              templateKey
             }
           }
         }
       }
+    }
   `).then(res => { 
        if (res.errors) { 
            return Promise.reject(res.errors); 
