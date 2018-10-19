@@ -7,15 +7,17 @@ exports.createPages = ({boundActionCreators, graphql}) => {
    return graphql(`{ 
        allMarkdownRemark { 
            edges { 
-               node { 
-                   html
-                   id
-                   frontmatter { 
-                       slug
-                       title
-                   }
-               }
-           }
+            node {
+              html
+              id
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }          
+          }
        }   
    }`).then(res => { 
        if (res.errors) { 
