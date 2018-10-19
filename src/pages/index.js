@@ -30,11 +30,13 @@ export const pageQuery = graphql`
       edges { 
         node { 
           id
-          frontmatter { 
-            title 
-            path
-            published 
-            date
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
           }
         }
       }
