@@ -1,3 +1,38 @@
+const path = require('path'); 
+ 
+exports.createPages = ({boundActionCreators, graphql}) => { 
+   const {createPage} = boundActionCreators; 
+   const postTemplate = path.resolve('src/templates/post.js'); 
+   return graphql(`{ 
+       allMarkdownRemark { 
+           edges { 
+               node { 
+                   html
+                   id
+                   frontmatter { 
+                       path
+                       title
+                   }
+               }
+           }
+       }   
+   }`).then(res => { 
+       if (res.errors) { 
+           return Promise.reject(res.errors); 
+       } 
+
+       res.data.allMarkdownRemark.edges.forEach(({node}) => { 
+           createPage({
+               path: node.frontmatter.path, 
+               component: postTemplate 
+           }); 
+       }); 
+   }); 
+} 
+
+
+/* 
+
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
@@ -13,10 +48,6 @@ exports.createPages = ({ actions, graphql }) => {
             id
             fields {
               slug
-            }
-            frontmatter {
-              tags
-              templateKey
             }
           }
         }
@@ -83,3 +114,5 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+*/
