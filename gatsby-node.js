@@ -4,22 +4,24 @@ const { createFilePath } = require('gatsby-source-filesystem')
 exports.createPages = ({boundActionCreators, graphql}) => { 
    const {createPage} = boundActionCreators; 
    const postTemplate = path.resolve('src/templates/post.js'); 
-   return graphql(`{ 
-       allMarkdownRemark { 
-           edges { 
+   return graphql(`
+      {
+        allMarkdownRemark(limit: 1000) {
+          edges {
             node {
               id
               fields {
                 slug
+              }
               frontmatter {
-                title
-                date
+                tags
                 templateKey
               }
-            }  
+            }
           }
-       }   
-   }`).then(res => { 
+        }
+      }
+  `).then(res => { 
        if (res.errors) { 
            return Promise.reject(res.errors); 
        } 
