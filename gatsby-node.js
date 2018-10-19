@@ -8,7 +8,6 @@ exports.createPages = ({boundActionCreators, graphql}) => {
        allMarkdownRemark { 
            edges { 
             node {
-              html
               id
               fields {
                 slug
