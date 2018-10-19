@@ -1,0 +1,107 @@
+div { 
+    padding: 0.1em; 
+}
+
+.blue { 
+    color: blue; 
+}
+.red { 
+    color: red; 
+}
+.yellow { 
+    color: yellow; 
+}
+.green { 
+    color: green; 
+}
+
+.center { 
+    text-align: center; 
+}
+
+.website-title { 
+
+}
+.website-title p { 
+    font-size: 1em; 
+    letter-spacing: -1px; /* -3px */ 
+    display: inline; 
+} 
+.website-title p:nth-child(5) { 
+    margin-left: 0.5em; 
+} 
+
+.search { 
+    padding-top: 0.8em; 
+    padding-bottom: 1em; /* quick fix */ 
+} 
+.search input { /* these are rules just guesses */ 
+    border: 0.2px solid silver; 
+    width: 100%; 
+    /* padding-bottom: -0.2px; */ 
+} 
+.search input:focus { /* these are rules just guesses */ 
+    border: 1px solid blue; 
+    padding: 0px; 
+} 
+
+.navigation { 
+    border: 1px solid silver; 
+    padding-top: 0px; 
+    margin-bottom: 0.5em; 
+} 
+.navigation a { 
+    color: rgb(80, 79, 79); 
+    font-size: 1.2em; 
+    box-shadow: 1px; 
+    padding-left: 1em; 
+} 
+.navigation a:hover { 
+    color: blue; 
+    border-bottom: 1em; 
+    border-bottom-color: blue; 
+    text-decoration: underline; /* This is hopefully only tempoary */ 
+} 
+@media only screen and (max-width: 600px) {
+    .navigation a { 
+        font-size: 0.8em; 
+        padding-left: 0.5em;         
+    }    
+}
+
+
+.mobile .articles-container { 
+    border: 1px solid silver; 
+    border-radius: 0.5em; 
+    padding: 0.2em 0.2em 0.2em; 
+}
+
+.mobile .article-container { 
+    padding: 1em 1em 1em 1em; 
+}
+/* .mobile .article-container a { 
+    text-decoration: none; 
+    font-size: 1.1em; 
+    margin-bottom: -2em; 
+} */ 
+.mobile .article-container .anchor-tag { /* Targets a Gatsby-Link element */ 
+    text-decoration: none; 
+    font-size: 1.1em; 
+    margin-bottom: -2em; 
+} 
+.mobile .article-container p:first-of-type  { /* Blog Post date, author etc */ 
+    color: darkgreen; 
+    /* position: relative; */ 
+    font-size: 0.8em; 
+    /* top: -1em; */ 
+    padding-top: 0.2em; 
+    padding-bottom: 1em; 
+    border-bottom: 1px solid; 
+    border-bottom-color: silver; 
+}
+
+.mobile .article-container p { /* Article/blog-post Summary */ 
+    color: rgb(99, 97, 97); 
+    padding-top: 1.5em;  
+    margin-bottom: -0.4em; 
+}
