@@ -11,11 +11,7 @@ exports.createPages = ({boundActionCreators, graphql}) => {
               id
               fields {
                 slug
-              }
-              frontmatter {
-                title
-              }
-            }          
+            }  
           }
        }   
    }`).then(res => { 
