@@ -1,7 +1,7 @@
 import React from 'react'; 
 import Link from 'gatsby-link'; 
 
-import Navbar from '../components/navbar'; 
+// import Navbar from '../components/navbar'; 
 
 const IndexPage = ({data}) => (
   <div className="mobile articles-container"> 
